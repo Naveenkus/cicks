@@ -1,6 +1,7 @@
 import 'package:cicks/components/my_button.dart';
 import 'package:cicks/components/my_text_field.dart';
 import 'package:cicks/components/square_tile.dart';
+import 'package:cicks/main.dart';
 import 'package:cicks/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -23,12 +24,14 @@ class Loginpage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 50.0,),
+                SizedBox(height: 40.0,),
                 // Image.asset("assets/images/shoe.png",
                 // height: 160,
                 // width: 160,),
-                Icon(Icons.snowshoeing, size: 100,),
-                SizedBox(height: 50.0,),
+                Image.asset("assets/images/cicks2.png",
+                  height: 150,
+                  width: 150,),
+                SizedBox(height: 10.0,),
                 Text("Welcome back , Let CICKS...",
                 style: TextStyle(
                   fontSize: 17,
@@ -62,7 +65,7 @@ class Loginpage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Homepage()));}
+                        MaterialPageRoute(builder: (context) => Navigation()));}
                 ),
                 SizedBox(height: 25.0,),
                 Padding(

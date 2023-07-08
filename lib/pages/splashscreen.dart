@@ -19,12 +19,14 @@ class _SplashscreenState extends State<Splashscreen> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFd9d9d9),
+      backgroundColor: Color(0xFF000000),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/cicks_logo.png")
+            Image.asset("assets/images/cicks_logo.png",
+            height: 750,
+            width: 750,)
           ],
         ),
       ),

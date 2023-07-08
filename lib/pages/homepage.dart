@@ -1,8 +1,19 @@
+import 'package:cicks/pages/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cicks/main.dart';
+import '../Widgets/chip_widget.dart';
+import 'loginpage.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
    Homepage({Key? key}) : super(key: key);
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  int currentPage = 0;
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -15,7 +26,7 @@ class Homepage extends StatelessWidget {
         backgroundColor: Color(0xFFebeaee),
         child: ListView(
         padding: EdgeInsets.zero,
-        children: const [
+        children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
               color: Color(0xFFD6D6D6)
@@ -27,35 +38,49 @@ class Homepage extends StatelessWidget {
               )
           ),
           ListTile(
-            leading: Icon(CupertinoIcons.person_crop_square),
-            title: Text('Edit Profile'),
-            trailing: Icon(Icons.arrow_forward_ios_outlined),
+            leading: Icon(CupertinoIcons.plus_app),
+            title: Text('Cicks Plus'),
           ),
           ListTile(
             leading: Icon(CupertinoIcons.bitcoin),
-            title: Text('Supercoins'),
-            trailing: Icon(Icons.arrow_forward_ios_outlined),
-          ),
-          // ListTile(
-          //   leading: Icon(Icons.light),
-          //   title: Text(''),
-          //   trailing: Icon(Icons.arrow_forward_ios_outlined),
-          // ),
-          // ListTile(
-          //   leading: Icon(Icons.comment_bank_outlined),
-          //   title: Text('Feedback'),
-          //   trailing: Icon(Icons.arrow_forward_ios_outlined),
-          // ),
-          ListTile(
-            leading: Icon(Icons.call),
-            title: Text('Contact us'),
-            trailing: Icon(Icons.arrow_forward_ios_outlined),
+            title: Text('Your coins'),
           ),
           ListTile(
-            leading: Icon(Icons.email),
-            title: Text('Email'),
-            trailing: Icon(Icons.arrow_forward_ios_outlined),
+            leading: Icon(CupertinoIcons.cube_box),
+            title: Text('Orders'),
           ),
+          ListTile(
+            leading: Icon(Icons.card_giftcard_rounded),
+            title: Text('Coupons'),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(CupertinoIcons.headphones),
+            title: Text('Help Centre'),
+          ),
+          ListTile(
+            leading: Icon(Icons.note_alt_outlined),
+            title: Text('Reviews'),
+          ),
+          ListTile(
+            leading: Icon(Icons.sticky_note_2_outlined),
+            title: Text('Terms and Policies'),
+          ),
+          ListTile(
+            leading: Icon(Icons.question_mark_sharp),
+            title: Text('Browse FAQs'),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text('Log out'),
+            onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Loginpage()));
+            },
+          ),
+
         ],
       ),),
       body: SafeArea(
@@ -96,30 +121,66 @@ class Homepage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text("Hello"),
+                  SizedBox(height: 30,),
+                  TextField(
+                    // onChanged: searchProducts,
+                    decoration: InputDecoration(
+                      hintText: 'Search',
+                      prefixIcon: Icon(Icons.search, color: Colors.black87,),
+                      suffixIcon: Icon(Icons.mic_none, color: Colors.black87,),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFFebeaee)),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      focusedBorder:OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFFf9f9f9),),
+                        borderRadius: BorderRadius.circular(30.0)
+                      ),
+                      fillColor: Color(0xFFf9f9f9),
+                      filled: true,
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Container(
+                    height: 130,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                  ),
+                  SizedBox(height: 35,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text("NEW IN",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold
+                      ),
+                      textAlign: TextAlign.left),
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    height: 40,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                        children: [
+                    ChipWidget(chiplabel: "All",),
+                    ChipWidget(chiplabel: "Shoes",),
+                    ChipWidget(chiplabel: "Bags",),
+                    ChipWidget(chiplabel: "Glasses",),
+                    ChipWidget(chiplabel: "Accessories",),
+                        ],
+            ),
+                  ),
                 ],
               ),
             )),
       ),
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Color(0xFFf9f9f9),
-        destinations: [
-          NavigationDestination(icon: Icon(Icons.home_filled,
-          size: 35,
-          weight: 20,), label:'Home',
-          ),
-          NavigationDestination(icon: Icon(CupertinoIcons.suit_heart, size: 30,), label:'Wishlist'),
-          NavigationDestination(icon: Icon(CupertinoIcons.shopping_cart ,size: 30,), label:'Cart'),
-          NavigationDestination(icon: Icon(CupertinoIcons.person, size: 30,), label: 'Profile'),
-        ],
-        // onDestinationSelected: (int index){
-        //   setState(() {
-        //     currentPage = index;
-        //   });
-        // },
-        // selectedIndex: currentPage,
-      ),
+
     );
   }
 }
+
 
