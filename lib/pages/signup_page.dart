@@ -1,3 +1,4 @@
+import 'package:cicks/main.dart';
 import 'package:cicks/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 
@@ -24,11 +25,11 @@ class SignUp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 50.0,),
-              Image.asset("assets/images/shoe.png",
-              height: 100,
-              width: 100,),
-              SizedBox(height: 25.0,),
+              SizedBox(height: 40.0,),
+              Image.asset("assets/images/cicks2.png",
+                height: 120,
+                width: 120,),
+              SizedBox(height: 10.0,),
               Text("Welcome to CICKS !",
                 style: TextStyle(
                     fontSize: 17,
@@ -57,7 +58,7 @@ class SignUp extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Homepage()));}
+                      MaterialPageRoute(builder: (context) => Navigation()));}
               ),
               SizedBox(height: 25.0,),
               Padding(
